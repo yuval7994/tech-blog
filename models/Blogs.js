@@ -39,3 +39,5 @@ Blogs.init({
     },
   },
 })
+
+module.exports = Blogs
