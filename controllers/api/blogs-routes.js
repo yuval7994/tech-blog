@@ -1,4 +1,5 @@
 const router = require("express").Router()
+const req = require("express/lib/request")
 const sequelize = require("../../config/connection")
 const { Blogs, Users, Comment } = require("../../models")
 const withAuth = require("../../utils/auth")
@@ -118,6 +119,50 @@ router.post("/", withAuth, (req, res) => {
       console.log(err)
       res.status(500).json(err)
     })
+})
+
+router.delete("/:id", withAuth, (req, res) => {
+  console.log("id", req.params.id)
+  Blogs.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbBlogsData) => {
+      if (!dbBlogsData) {
+        res.status(404).json({ message: "No blog found" })
+        return
+      }
+      res.json(dbBlogsData)
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json(err)
+    })
+
+  router.put("/:id", withAuth, (req, res) => {
+    Blogs.update(
+      {
+        title: req.body.title,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    )
+      .then((dbBlogsData) => {
+        if (!dbBlogsData) {
+          res.status(404).json({ message: "No blog found" })
+          return
+        }
+        res.json(dbBlogsData)
+      })
+      .catch((err) => {
+        console.log(err)
+        res.status(500).json(err)
+      })
+  })
 })
 
 module.exports = router

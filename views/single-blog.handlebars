@@ -1,6 +1,10 @@
 {{> blog-details blog}}
 
 {{#if loggedIn}}
+{{> edit-blog }}
+<button type="button" class="edit-blog-btn btn">Edit Blog</button>
+<button type="button" class="delete-blog-btn btn">Delete Blog</button>
+
 <div class="card">
     <h3 class="card-header"></h3>
     <form class="card-body comment-form" id="comment-form">
@@ -17,4 +21,6 @@
 
 {{#if loggedIn}}
 <script src= "/javascript/comment.js"></script>
+<script src= "/javascript/delete-blog.js"></script>
+<script src= "/javascript/edit-blog.js"></script>
 {{/if}}

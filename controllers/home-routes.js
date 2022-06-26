@@ -139,7 +139,11 @@ router.get("/dashboard", withAuth, (req, res) => {
     .then((dbBlogsData) => {
       const blogs = dbBlogsData.map((blogs) => blogs.get({ plain: true }))
       console.log(req.session)
-      res.render("dashboard", { blogs, loggedIn: req.session.loggedIn })
+      res.render("dashboard", {
+        blogs,
+        loggedIn: req.session.loggedIn,
+        username: req.session.username,
+      })
     })
     .catch((err) => {
       console.log(err)

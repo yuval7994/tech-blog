@@ -1,7 +1,10 @@
 <section>
-  <h2>Create New Blog</h2>
+  <h1>Welcome, {{username}}!</h1>
+</section>
+<section>
+  <button id="add-blog" class="btn"> Add Blog</button>
 
-  <form class="new-blog-form">
+  <form class="new-blog-form hide">
     <div>
       <label for="blog-title">Title</label>
       <input type="text" id="blog-title" name="blog-title" />
@@ -21,7 +24,6 @@
     {{#each blogs as |blog|}}
     <li>
       {{> blog-info blog}}
-      <a href="/dashboard/edit/{{blog.id}}" class="edit-link">Edit blog</a>
     </li>
     {{/each}}
   </ol>

@@ -1,3 +1,6 @@
+const blogForm = document.querySelector(".new-blog-form")
+const addBlogBtn = document.querySelector("#add-blog")
+
 async function newFormHandler(event) {
   event.preventDefault()
 
@@ -22,6 +25,9 @@ async function newFormHandler(event) {
   }
 }
 
-document
-  .querySelector(".new-blog-form")
-  .addEventListener("submit", newFormHandler)
+addBlogBtn.addEventListener("click", function () {
+  blogForm.classList.remove("hide")
+  addBlogBtn.classList.add("hide")
+})
+
+blogForm.addEventListener("submit", newFormHandler)

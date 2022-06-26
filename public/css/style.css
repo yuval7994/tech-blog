@@ -224,6 +224,10 @@ footer {
   border-radius: var(--border-radius);
 }
 
+.hide {
+  display: none;
+}
+
 .min-100-vh {
   min-height: 100vh;
 }
