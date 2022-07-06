@@ -22,6 +22,7 @@ const sess = {
 
 app.use(session(sess))
 
+
 const helpers = require("./utils/helpers")
 
 const hbs = exphbs.create({
@@ -46,8 +47,6 @@ app.get("/", (req, res) => {
 })
 
 app.use(require("./controllers/"))
-
-const PORT = process.env.PORT || 3001;
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log("Now listening..."))
